@@ -1,10 +1,30 @@
-const express = require('express')
+import express from 'express'
+import dotenv from 'dotenv'
+import connectToMongoDB from './db.js'
+import router from './routes/authRouter.js'
+import cors from 'cors'
+
 const app = express()
+const PORT = process.env.PORT || 5000
 
-const PORT = process.env.PORT 
+dotenv.config()
 
-app.get('/', function (req, res) {
-    res.send('Hello World23')
-  })
-  
-  app.listen(3000, () => console.log(`Server running on port ${PORT}`))
+app.use(express.json())
+app.use(cors())
+
+app.use('/api/auth', router)
+
+const start = async() => {
+    try {
+        await connectToMongoDB()
+
+        app.listen(PORT, () => {
+            console.log(`Server running on port ${PORT}`)
+        })
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+start()
+
