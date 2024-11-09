@@ -5,10 +5,11 @@ const generateTokenCookie = (userId, res) => {
         expiresIn:'15d'
     })
 
-    res.coockie('jwt', token, {
+    res.cookie('jwt', token, {
         maxAge: 15 * 24 * 60 * 60 * 1000,
         httpOnly: true,
-        sameSite: 'strict'
+        sameSite: 'strict',
+        secure: process.env.NODE_ENV !== 'development'
     })
 }
 
