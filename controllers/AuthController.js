@@ -49,7 +49,7 @@ export const signup = async (req, res) => {
 
 export const login = async (req, res) => {
     try {
-        const {username, paswword} = req.body
+        const {username, password} = req.body
         const user = await User.findOne({username})
         const isPasswordCorrect = await bcrypt.compare(password, user?.password || '')
 
