@@ -50,7 +50,7 @@ export const getMessages = async (req, res) => {
 
         const message = conversation.message
 
-        res.status(200).json(conversation.message)
+        res.status(200).json(message)
 
     } catch (error) {
         console.log('Error in getMessages controller', error.message)

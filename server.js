@@ -1,6 +1,7 @@
 import express from 'express'
 import dotenv from 'dotenv'
 import cookieParser from 'cookie-parser'
+import cors from 'cors'
 
 import connectToMongoDB from './db.js'
 
@@ -8,7 +9,7 @@ import authRouter from './routes/authRouter.js'
 import messageRoutes from './routes/messageRouter.js'
 import userRoutes from './routes/userRouter.js'
 
-import cors from 'cors'
+
 
 const app = express()
 const PORT = process.env.PORT || 5000

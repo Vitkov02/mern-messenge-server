@@ -8,3 +8,6 @@ router.get('/:id', protectRouter, getMessages)
 router.post('/send/:id', protectRouter, sendMessage)
 
 export default router
+
+// router.get('/:id', protectRouter, getMessages)
+// router.post('/send/:id', protectRouter, sendMessage)
